@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para vos ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 40%, #68162f 0%, #300a17 48%, #0e0207 100%);
+    color: white;
+}
+
+/* ================================
+   FONDO
+================================ */
+
+.fondo {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.luz {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .35;
+    animation: moverLuz 10s ease-in-out infinite alternate;
+}
+
+.luz1 {
+    background: #ff416c;
+    top: -120px;
+    left: -100px;
+}
+
+.luz2 {
+    background: #b51f50;
+    right: -120px;
+    bottom: -120px;
+    animation-delay: 3s;
+}
+
+@keyframes moverLuz {
+    from {
+        transform: translate(0,0) scale(1);
+    }
+    to {
+        transform: translate(70px,50px) scale(1.3);
+    }
+}
+
+/* ================================
+   CORAZONES
+================================ */
+
+.corazon {
+    position: fixed;
+    bottom: -40px;
+    color: rgba(255,130,155,.8);
+    text-shadow: 0 0 12px rgba(255,80,120,.8);
+    pointer-events: none;
+    animation: subirCorazon linear forwards;
+    z-index: 2;
+}
+
+@keyframes subirCorazon {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ================================
+   PANTALLA INICIAL
+================================ */
+
+#inicio {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    text-align: center;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#inicio.oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tituloInicio {
+    font-size: clamp(30px, 8vw, 46px);
+    margin: 0;
+    text-shadow:
+        0 0 12px rgba(255,80,120,.9),
+        0 0 35px rgba(255,80,120,.5);
+}
+
+.subtituloInicio {
+    margin: 12px 0 10px;
+    color: #ffdce5;
+    font-size: 18px;
+}
+
+#contador {
+    min-height: 32px;
+    margin: 12px 0 20px;
+    color: #ffc2d0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ================================
+   SOBRE
+================================ */
+
+#zonaSobre {
+    position: relative;
+    width: min(330px, 85vw);
+    height: 230px;
+    margin-top: 5px;
+    perspective: 1000px;
+}
+
+.sobre {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 185px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(145deg, #e03b60, #a9153b);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.55),
+        0 0 35px rgba(255,60,110,.25);
+
+    z-index: 3;
+}
+
+/* Parte inferior */
+
+.sobre::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-bottom: 110px solid #b51c43;
+
+    z-index: 5;
+}
+
+/* ================================
+   CARTA DENTRO DEL SOBRE
+================================ */
+
+.miniCarta {
+    position: absolute;
+
+    width: 88%;
+    height: 185px;
+
+    left: 6%;
+    bottom: 12px;
+
+    background:
+        linear-gradient(135deg, #fffdf8, #ffe9ee);
+
+    border-radius: 5px;
+
+    color: #641a2c;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.25);
+
+    z-index: 2;
+
+    transition:
+        transform 1.8s cubic-bezier(.2,.8,.2,1),
+        bottom 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.miniCarta::before {
+    content: "♥";
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    color: #d72b52;
+    font-size: 20px;
+}
+
+/* ================================
+   SOLAPA
+================================ */
+
+.solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 120px;
+
+    background:
+        linear-gradient(145deg, #f05272, #b71942);
+
+    clip-path:
+        polygon(0 0, 100% 0, 50% 100%);
+
+    transform-origin: top center;
+
+    z-index: 10;
+
+    transition:
+        transform 1.25s cubic-bezier(.65,0,.35,1);
+}
+
+#zonaSobre.abierto .solapa {
+    transform: rotateX(180deg);
+}
+
+#zonaSobre.abierto .miniCarta {
+    bottom: 105px;
+    transform: translateY(-30px);
+}
+
+/* ================================
+   BOTÓN
+================================ */
+
+#abrir {
+    margin-top: 18px;
+
+    border: none;
+    border-radius: 50px;
+
+    padding: 15px 30px;
+
+    color: white;
+
+    background:
+        linear-gradient(45deg, #ff315c, #ff7896);
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 18px rgba(255,60,100,.7),
+        0 8px 25px rgba(0,0,0,.3);
+
+    animation: pulsar 1.5s infinite;
+
+    display: none;
+}
+
+@keyframes pulsar {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+/* ================================
+   CARTA FINAL
+================================ */
+
+#cartaFinal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(.75);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease,
+        visibility 1.5s;
+}
+
+#cartaFinal.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.papel {
+    position: relative;
+
+    width: min(700px, 94vw);
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    padding: 45px 30px;
+
+    color: #481724;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffefa,
+            #fff0f3
+        );
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.65),
+        0 0 50px rgba(255,80,120,.4);
+
+    animation: papelAparece 1.5s ease;
+}
+
+@keyframes papelAparece {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.papel::before {
+    content: "♥";
+
+    position: absolute;
+    top: 14px;
+    left: 20px;
+
+    color: #cf2850;
+    font-size: 25px;
+}
+
+.papel::after {
+    content: "♥";
+
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+
+    color: #cf2850;
+    font-size: 25px;
+}
+
+/* ================================
+   CONTENIDO DE LA CARTA
+================================ */
+
+.tituloCarta {
+    text-align: center;
+
+    color: #a51e40;
+
+    font-size: clamp(28px, 7vw, 39px);
+
+    margin-bottom: 28px;
+}
+
+.textoCarta {
+    font-size: 19px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.textoCarta p {
+    margin-bottom: 22px;
+}
+
+/* Aparición escalonada */
+
+.contenidoOculto {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.visible .contenidoOculto {
+    animation:
+        aparecerTexto 1.4s ease forwards;
+}
+
+.visible .retraso1 {
+    animation-delay: .7s;
+}
+
+.visible .retraso2 {
+    animation-delay: 1.5s;
+}
+
+.visible .retraso3 {
+    animation-delay: 2.3s;
+}
+
+@keyframes aparecerTexto {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   VERSÍCULO
+================================ */
+
+.versiculo {
+    margin: 30px 0;
+
+    padding: 22px;
+
+    border-left: 4px solid #c42b50;
+
+    border-radius: 5px;
+
+    background:
+        rgba(255,255,255,.65);
+
+    color: #5a2030;
+
+    font-style: italic;
+
+    line-height: 1.75;
+
+    text-align: center;
+}
+
+/* ================================
+   FIRMA
+================================ */
+
+.firma {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 21px;
+
+    line-height: 1.7;
+}
+
+.teAmo {
+    margin-top: 18px;
+
+    text-align: center;
+
+    color: #c21e48;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* ================================
+   MÚSICA
+================================ */
+
+#botonMusica {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #c52d50;
+
+    color: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    box-shadow:
+        0 0 20px rgba(255,60,100,.7);
+
+    display: none;
+}
+
+/* ================================
+   MÓVIL
+================================ */
+
+@media(max-width: 500px) {
+
+    #zonaSobre {
+        width: 300px;
+        height: 215px;
+    }
+
+    .sobre {
+        height: 170px;
+    }
+
+    .sobre::after {
+        border-left-width: 150px;
+        border-right-width: 150px;
+    }
+
+    .miniCarta {
+        height: 165px;
+    }
+
+    .papel {
+        padding: 40px 22px;
+        max-height: 90vh;
+    }
+
+    .textoCarta {
+        font-size: 17px;
+    }
+
+    .versiculo {
+        font-size: 16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================================
+     FONDO
+================================ -->
+
+<div class="fondo">
+    <div class="luz luz1"></div>
+    <div class="luz luz2"></div>
+</div>
+
+
+<!-- ================================
+     PANTALLA INICIAL
+================================ -->
+
+<section id="inicio">
+
+    <h1 class="tituloInicio">
+        Una carta para vos ❤️
+    </h1>
+
+    <div class="subtituloInicio">
+        Hay algo que preparé especialmente para vos...
+    </div>
+
+    <div id="contador">
+        Esperando...
+    </div>
+
+
+    <div id="zonaSobre">
+
+        <div class="miniCarta"></div>
+
+        <div class="sobre"></div>
+
+        <div class="solapa"></div>
+
+    </div>
+
+
+    <button id="abrir">
+        💌 Abrir mi carta
+    </button>
+
+</section>
+
+
+<!-- ================================
+     CARTA
+================================ -->
+
+<section id="cartaFinal">
+
+    <div class="papel">
+
+        <div class="tituloCarta contenidoOculto retraso1">
+            Para el amor de mi vida ❤️
+        </div>
+
+
+        <div class="textoCarta">
+
+            <p class="contenidoOculto retraso1">
+                Hoy celebramos un nuevo paso en nuestro camino.
+                Cada mes contigo es un regalo, y me llena de alegría
+                saber que avanzamos juntos hacia lo que Dios tiene
+                preparado para nosotros.
+            </p>
+
+
+            <p class="contenidoOculto retraso2">
+                Me emociona crecer a tu lado, aprender contigo y soñar
+                con el día en que seas mi esposa.
+            </p>
+
+        </div>
+
+
+        <div class="versiculo contenidoOculto retraso2">
+
+            "Mejores son dos que uno; porque tienen mejor paga de su
+            trabajo. Porque si cayeren, el uno levantará a su compañero."
+
+            <br><br>
+
+            — Eclesiastés 4:9-10
+
+        </div>
+
+
+        <div class="firma contenidoOculto retraso3">
+
+            Con todo mi corazón,
+
+            <br>
+
+            <strong>Nahuel</strong>
+
+        </div>
+
+
+        <div class="teAmo contenidoOculto retraso3">
+            Te amo ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     AUDIO
+================================ -->
+
+<audio id="audio" preload="auto" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+<button id="botonMusica">
+    🎵
+</button>
+
+
+<script>
+
+/* =====================================================
+   FECHA DE APERTURA
+
+   30 DE SEPTIEMBRE DE 2026
+   00:00 HORA ARGENTINA
+===================================================== */
+
+const fechaApertura =
+    new Date("2026-09-30T00:00:00-03:00");
+
+
+/* =====================================================
+   CONFIGURACIÓN DE LA MÚSICA
+
+   22 = 22 segundos
+   Es decir: 00:22
+===================================================== */
+
+const segundoInicioMusica = 22;
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const contador =
+    document.getElementById("contador");
+
+const botonAbrir =
+    document.getElementById("abrir");
+
+const zonaSobre =
+    document.getElementById("zonaSobre");
+
+const inicio =
+    document.getElementById("inicio");
+
+const cartaFinal =
+    document.getElementById("cartaFinal");
+
+const audio =
+    document.getElementById("audio");
+
+const botonMusica =
+    document.getElementById("botonMusica");
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+function actualizarContador() {
+
+    const ahora = new Date();
+
+    const diferencia =
+        fechaApertura - ahora;
+
+
+    if (diferencia <= 0) {
+
+        contador.innerHTML =
+            "❤️ Ya podés abrirla ❤️";
+
+        botonAbrir.style.display =
+            "inline-block";
+
+        return;
+    }
+
+
+    const dias =
+        Math.floor(
+            diferencia /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const horas =
+        Math.floor(
+            (diferencia /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutos =
+        Math.floor(
+            (diferencia /
+            (1000 * 60)) % 60
+        );
+
+
+    const segundos =
+        Math.floor(
+            (diferencia /
+            1000) % 60
+        );
+
+
+    contador.innerHTML =
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+
+actualizarContador();
+
+setInterval(
+    actualizarContador,
+    1000
+);
+
+
+/* =====================================================
+   ABRIR CARTA
+===================================================== */
+
+botonAbrir.addEventListener(
+    "click",
+    abrirCarta
+);
+
+
+function abrirCarta() {
+
+    /*
+       IMPORTANTE:
+
+       El usuario acaba de tocar el botón,
+       por lo que el navegador permite
+       iniciar el audio.
+
+       currentTime = 22 significa:
+       comenzar desde 00:22.
+    */
+
+    try {
+
+        audio.currentTime =
+            segundoInicioMusica;
+
+    } catch (error) {
+
+        console.log(
+            "No se pudo establecer el segundo inicial."
+        );
+
+    }
+
+
+    audio.volume = 0.45;
+
+
+    const reproduccion =
+        audio.play();
+
+
+    if (reproduccion) {
+
+        reproduccion.catch(
+            function(error) {
+
+                console.log(
+                    "El navegador bloqueó el audio:",
+                    error
+                );
+
+            }
+        );
+
+    }
+
+
+    /* Abrir sobre */
+
+    zonaSobre.classList.add(
+        "abierto"
+    );
+
+
+    /* Corazones de la apertura */
+
+    for (
+        let i = 0;
+        i < 25;
+        i++
+    ) {
+
+        setTimeout(
+            crearCorazon,
+            i * 70
+        );
+
+    }
+
+
+    /*
+       Después de abrir el sobre,
+       desaparece la pantalla inicial.
+    */
+
+    setTimeout(
+        function() {
+
+            inicio.classList.add(
+                "oculto"
+            );
+
+        },
+        1500
+    );
+
+
+    /*
+       Aparece la carta grande.
+    */
+
+    setTimeout(
+        function() {
+
+            cartaFinal.classList.add(
+                "visible"
+            );
+
+            botonMusica.style.display =
+                "block";
+
+
+            /*
+               Explosión de corazones.
+            */
+
+            for (
+                let i = 0;
+                i < 20;
+                i++
+            ) {
+
+                setTimeout(
+                    crearCorazon,
+                    i * 120
+                );
+
+            }
+
+        },
+        2300
+    );
+
+}
+
+
+/* =====================================================
+   CONTROL DE MÚSICA
+===================================================== */
+
+botonMusica.addEventListener(
+    "click",
+    function() {
+
+        if (audio.paused) {
+
+            audio.play();
+
+            botonMusica.innerHTML =
+                "🎵";
+
+        } else {
+
+            audio.pause();
+
+            botonMusica.innerHTML =
+                "🔇";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CREAR CORAZONES
+===================================================== */
+
+function crearCorazon() {
+
+    const corazon =
+        document.createElement("div");
+
+
+    corazon.className =
+        "corazon";
+
+
+    corazon.innerHTML =
+        Math.random() > .25
+        ? "♥"
+        : "❤";
+
+
+    corazon.style.left =
+        Math.random() * 100 + "%";
+
+
+    corazon.style.fontSize =
+        (12 + Math.random() * 25) + "px";
+
+
+    corazon.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+
+    document.body.appendChild(
+        corazon
+    );
+
+
+    setTimeout(
+        function() {
+
+            corazon.remove();
+
+        },
+        13000
+    );
+
+}
+
+
+/* =====================================================
+   CORAZONES DE FONDO
+===================================================== */
+
+setInterval(
+    function() {
+
+        crearCorazon();
+
+    },
+    800
+);
+
+</script>
+
+</body>
+</html>
