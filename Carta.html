@@ -3,15 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para vos ❤️</title>
 
 <style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
+    padding: 0;
     width: 100%;
     min-height: 100%;
 }
@@ -19,72 +27,116 @@ html, body {
 body {
     min-height: 100vh;
     overflow: hidden;
-    font-family: Georgia, "Times New Roman", serif;
-    background:
-        radial-gradient(circle at 50% 40%, #68162f 0%, #300a17 48%, #0e0207 100%);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #68162f 0%,
+            #300a17 50%,
+            #0e0207 100%
+        );
 }
 
-/* ================================
-   FONDO
-================================ */
+
+/* =====================================================
+   FONDO ANIMADO
+===================================================== */
 
 .fondo {
     position: fixed;
     inset: 0;
+
     overflow: hidden;
+
     pointer-events: none;
 }
 
 .luz {
     position: absolute;
-    width: 300px;
-    height: 300px;
+
+    width: 320px;
+    height: 320px;
+
     border-radius: 50%;
-    filter: blur(70px);
+
+    filter: blur(75px);
+
     opacity: .35;
-    animation: moverLuz 10s ease-in-out infinite alternate;
+
+    animation:
+        moverLuz 10s ease-in-out infinite alternate;
 }
 
 .luz1 {
     background: #ff416c;
-    top: -120px;
+
+    top: -130px;
     left: -100px;
 }
 
 .luz2 {
     background: #b51f50;
-    right: -120px;
-    bottom: -120px;
+
+    right: -130px;
+    bottom: -130px;
+
     animation-delay: 3s;
 }
 
 @keyframes moverLuz {
+
     from {
-        transform: translate(0,0) scale(1);
+        transform:
+            translate(0,0)
+            scale(1);
     }
+
     to {
-        transform: translate(70px,50px) scale(1.3);
+        transform:
+            translate(70px,50px)
+            scale(1.3);
     }
 }
 
-/* ================================
-   CORAZONES
-================================ */
+
+/* =====================================================
+   CORAZONES FLOTANDO
+===================================================== */
 
 .corazon {
     position: fixed;
-    bottom: -40px;
-    color: rgba(255,130,155,.8);
-    text-shadow: 0 0 12px rgba(255,80,120,.8);
+
+    bottom: -50px;
+
+    color:
+        rgba(255,130,155,.8);
+
+    text-shadow:
+        0 0 12px
+        rgba(255,80,120,.8);
+
     pointer-events: none;
-    animation: subirCorazon linear forwards;
+
+    animation:
+        subirCorazon linear forwards;
+
     z-index: 2;
 }
 
 @keyframes subirCorazon {
+
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
+
         opacity: 0;
     }
 
@@ -93,26 +145,35 @@ body {
     }
 
     100% {
-        transform: translateY(-115vh) rotate(360deg);
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
         opacity: 0;
     }
 }
 
-/* ================================
+
+/* =====================================================
    PANTALLA INICIAL
-================================ */
+===================================================== */
 
 #inicio {
+
     position: fixed;
     inset: 0;
+
     z-index: 20;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
     padding: 20px;
+
     text-align: center;
 
     transition:
@@ -121,46 +182,80 @@ body {
 }
 
 #inicio.oculto {
+
     opacity: 0;
+
     visibility: hidden;
 }
 
+
 .tituloInicio {
-    font-size: clamp(30px, 8vw, 46px);
+
     margin: 0;
+
+    font-size:
+        clamp(30px, 8vw, 46px);
+
     text-shadow:
-        0 0 12px rgba(255,80,120,.9),
-        0 0 35px rgba(255,80,120,.5);
+        0 0 12px
+        rgba(255,80,120,.9),
+
+        0 0 35px
+        rgba(255,80,120,.5);
 }
 
+
 .subtituloInicio {
-    margin: 12px 0 10px;
-    color: #ffdce5;
+
+    margin:
+        12px 0 10px;
+
+    color:
+        #ffdce5;
+
     font-size: 18px;
 }
 
+
 #contador {
+
     min-height: 32px;
-    margin: 12px 0 20px;
-    color: #ffc2d0;
+
+    margin:
+        12px 0 20px;
+
+    color:
+        #ffc2d0;
+
     font-size: 20px;
+
     font-weight: bold;
 }
 
-/* ================================
+
+/* =====================================================
    SOBRE
-================================ */
+===================================================== */
 
 #zonaSobre {
+
     position: relative;
-    width: min(330px, 85vw);
+
+    width:
+        min(330px, 85vw);
+
     height: 230px;
+
     margin-top: 5px;
+
     perspective: 1000px;
 }
 
+
 .sobre {
+
     position: absolute;
+
     left: 0;
     bottom: 0;
 
@@ -170,38 +265,56 @@ body {
     border-radius: 8px;
 
     background:
-        linear-gradient(145deg, #e03b60, #a9153b);
+        linear-gradient(
+            145deg,
+            #e03b60,
+            #a9153b
+        );
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.55),
-        0 0 35px rgba(255,60,110,.25);
+        0 20px 50px
+        rgba(0,0,0,.55),
+
+        0 0 35px
+        rgba(255,60,110,.25);
 
     z-index: 3;
 }
 
-/* Parte inferior */
+
+/* Parte inferior del sobre */
 
 .sobre::after {
+
     content: "";
+
     position: absolute;
+
     left: 0;
     bottom: 0;
 
     width: 0;
     height: 0;
 
-    border-left: 165px solid transparent;
-    border-right: 165px solid transparent;
-    border-bottom: 110px solid #b51c43;
+    border-left:
+        165px solid transparent;
+
+    border-right:
+        165px solid transparent;
+
+    border-bottom:
+        110px solid #b51c43;
 
     z-index: 5;
 }
 
-/* ================================
+
+/* =====================================================
    CARTA DENTRO DEL SOBRE
-================================ */
+===================================================== */
 
 .miniCarta {
+
     position: absolute;
 
     width: 88%;
@@ -211,37 +324,56 @@ body {
     bottom: 12px;
 
     background:
-        linear-gradient(135deg, #fffdf8, #ffe9ee);
+        linear-gradient(
+            135deg,
+            #fffdf8,
+            #ffe9ee
+        );
 
     border-radius: 5px;
 
     color: #641a2c;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,.25);
+        0 5px 20px
+        rgba(0,0,0,.25);
 
     z-index: 2;
 
     transition:
-        transform 1.8s cubic-bezier(.2,.8,.2,1),
-        bottom 1.8s cubic-bezier(.2,.8,.2,1);
+
+        transform 1.8s
+        cubic-bezier(.2,.8,.2,1),
+
+        bottom 1.8s
+        cubic-bezier(.2,.8,.2,1);
 }
 
+
 .miniCarta::before {
+
     content: "♥";
+
     position: absolute;
+
     top: 10px;
     right: 14px;
-    color: #d72b52;
+
+    color:
+        #d72b52;
+
     font-size: 20px;
 }
 
-/* ================================
-   SOLAPA
-================================ */
+
+/* =====================================================
+   SOLAPA DEL SOBRE
+===================================================== */
 
 .solapa {
+
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -249,115 +381,181 @@ body {
     height: 120px;
 
     background:
-        linear-gradient(145deg, #f05272, #b71942);
+        linear-gradient(
+            145deg,
+            #f05272,
+            #b71942
+        );
 
     clip-path:
-        polygon(0 0, 100% 0, 50% 100%);
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
-    transform-origin: top center;
+    transform-origin:
+        top center;
 
     z-index: 10;
 
     transition:
-        transform 1.25s cubic-bezier(.65,0,.35,1);
+        transform 1.25s
+        cubic-bezier(.65,0,.35,1);
 }
 
-#zonaSobre.abierto .solapa {
-    transform: rotateX(180deg);
+
+#zonaSobre.abierto
+.solapa {
+
+    transform:
+        rotateX(180deg);
 }
 
-#zonaSobre.abierto .miniCarta {
+
+#zonaSobre.abierto
+.miniCarta {
+
     bottom: 105px;
-    transform: translateY(-30px);
+
+    transform:
+        translateY(-30px);
 }
 
-/* ================================
-   BOTÓN
-================================ */
+
+/* =====================================================
+   BOTÓN ABRIR
+===================================================== */
 
 #abrir {
+
     margin-top: 18px;
 
     border: none;
+
     border-radius: 50px;
 
-    padding: 15px 30px;
+    padding:
+        15px 30px;
 
     color: white;
 
     background:
-        linear-gradient(45deg, #ff315c, #ff7896);
+        linear-gradient(
+            45deg,
+            #ff315c,
+            #ff7896
+        );
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        serif;
+
     font-size: 18px;
 
     cursor: pointer;
 
     box-shadow:
-        0 0 18px rgba(255,60,100,.7),
-        0 8px 25px rgba(0,0,0,.3);
 
-    animation: pulsar 1.5s infinite;
+        0 0 18px
+        rgba(255,60,100,.7),
+
+        0 8px 25px
+        rgba(0,0,0,.3);
+
+    animation:
+        pulsar 1.5s infinite;
 
     display: none;
 }
 
+
 @keyframes pulsar {
-    0%,100% {
-        transform: scale(1);
+
+    0%,
+    100% {
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.06);
+        transform:
+            scale(1.06);
     }
 }
 
-/* ================================
+
+/* =====================================================
    CARTA FINAL
-================================ */
+===================================================== */
 
 #cartaFinal {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 30;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
     opacity: 0;
+
     visibility: hidden;
 
-    transform: scale(.75);
+    transform:
+        scale(.75);
 
     transition:
+
         opacity 1.5s ease,
+
         transform 1.5s ease,
+
         visibility 1.5s;
 }
 
+
 #cartaFinal.visible {
+
     opacity: 1;
+
     visibility: visible;
-    transform: scale(1);
+
+    transform:
+        scale(1);
 }
 
+
+/* =====================================================
+   PAPEL
+===================================================== */
+
 .papel {
+
     position: relative;
 
-    width: min(700px, 94vw);
-    max-height: 88vh;
+    width:
+        min(720px, 94vw);
+
+    max-height:
+        88vh;
 
     overflow-y: auto;
 
-    padding: 45px 30px;
+    padding:
+        45px 30px 50px;
 
-    color: #481724;
+    color:
+        #481724;
 
     background:
+
         linear-gradient(
             135deg,
             #fffefa,
@@ -367,169 +565,296 @@ body {
     border-radius: 9px;
 
     box-shadow:
-        0 25px 90px rgba(0,0,0,.65),
-        0 0 50px rgba(255,80,120,.4);
 
-    animation: papelAparece 1.5s ease;
+        0 25px 90px
+        rgba(0,0,0,.65),
+
+        0 0 50px
+        rgba(255,80,120,.4);
+
+    animation:
+        papelAparece 1.5s ease;
 }
 
+
 @keyframes papelAparece {
+
     from {
+
         opacity: 0;
-        transform: translateY(80px) scale(.8);
+
+        transform:
+            translateY(80px)
+            scale(.8);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
+
 .papel::before {
+
     content: "♥";
 
     position: absolute;
+
     top: 14px;
     left: 20px;
 
-    color: #cf2850;
+    color:
+        #cf2850;
+
     font-size: 25px;
 }
 
+
 .papel::after {
+
     content: "♥";
 
     position: absolute;
+
     bottom: 14px;
     right: 20px;
 
-    color: #cf2850;
+    color:
+        #cf2850;
+
     font-size: 25px;
 }
 
-/* ================================
-   CONTENIDO DE LA CARTA
-================================ */
+
+/* =====================================================
+   TÍTULO
+===================================================== */
 
 .tituloCarta {
+
     text-align: center;
 
-    color: #a51e40;
+    color:
+        #a51e40;
 
-    font-size: clamp(28px, 7vw, 39px);
+    font-size:
+        clamp(28px, 7vw, 39px);
 
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
 
 .textoCarta {
+
     font-size: 19px;
-    line-height: 1.8;
+
+    line-height: 1.85;
+
     text-align: center;
 }
 
+
 .textoCarta p {
-    margin-bottom: 22px;
+
+    margin-bottom: 24px;
 }
 
-/* Aparición escalonada */
 
-.contenidoOculto {
-    opacity: 0;
-    transform: translateY(20px);
+/* =====================================================
+   SEPARADOR
+===================================================== */
+
+.separador {
+
+    text-align: center;
+
+    margin:
+        28px 0;
+
+    color:
+        #c72c50;
+
+    font-size: 22px;
+
+    letter-spacing: 8px;
 }
 
-.visible .contenidoOculto {
-    animation:
-        aparecerTexto 1.4s ease forwards;
-}
 
-.visible .retraso1 {
-    animation-delay: .7s;
-}
-
-.visible .retraso2 {
-    animation-delay: 1.5s;
-}
-
-.visible .retraso3 {
-    animation-delay: 2.3s;
-}
-
-@keyframes aparecerTexto {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ================================
+/* =====================================================
    VERSÍCULO
-================================ */
+===================================================== */
 
 .versiculo {
-    margin: 30px 0;
 
-    padding: 22px;
+    margin:
+        32px 0;
 
-    border-left: 4px solid #c42b50;
+    padding: 23px;
+
+    border-left:
+        4px solid #c42b50;
 
     border-radius: 5px;
 
     background:
         rgba(255,255,255,.65);
 
-    color: #5a2030;
+    color:
+        #5a2030;
 
     font-style: italic;
 
-    line-height: 1.75;
+    line-height: 1.8;
 
     text-align: center;
 }
 
-/* ================================
+
+/* =====================================================
    FIRMA
-================================ */
+===================================================== */
 
 .firma {
+
     text-align: center;
 
-    margin-top: 30px;
+    margin-top: 32px;
 
     font-size: 21px;
 
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
+
 .teAmo {
-    margin-top: 18px;
+
+    margin-top: 20px;
 
     text-align: center;
 
-    color: #c21e48;
+    color:
+        #c21e48;
 
-    font-size: 35px;
+    font-size: 37px;
 
     font-weight: bold;
 
-    animation: latido 1.5s infinite;
+    animation:
+        latido 1.5s infinite;
 }
 
+
 @keyframes latido {
-    0%,100% {
-        transform: scale(1);
+
+    0%,
+    100% {
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.08);
+        transform:
+            scale(1.08);
     }
 }
 
-/* ================================
-   MÚSICA
-================================ */
+
+/* =====================================================
+   ANIMACIÓN DEL TEXTO
+===================================================== */
+
+.contenidoOculto {
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+}
+
+
+.visible
+.contenidoOculto {
+
+    animation:
+        aparecerTexto 1.3s ease forwards;
+}
+
+
+.visible
+.retraso1 {
+
+    animation-delay:
+        .5s;
+}
+
+
+.visible
+.retraso2 {
+
+    animation-delay:
+        1.2s;
+}
+
+
+.visible
+.retraso3 {
+
+    animation-delay:
+        2s;
+}
+
+
+.visible
+.retraso4 {
+
+    animation-delay:
+        2.8s;
+}
+
+
+.visible
+.retraso5 {
+
+    animation-delay:
+        3.6s;
+}
+
+
+.visible
+.retraso6 {
+
+    animation-delay:
+        4.4s;
+}
+
+
+@keyframes aparecerTexto {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   BOTÓN DE MÚSICA
+===================================================== */
 
 #botonMusica {
+
     position: fixed;
 
     right: 18px;
@@ -539,9 +864,11 @@ body {
     height: 52px;
 
     border: none;
+
     border-radius: 50%;
 
-    background: #c52d50;
+    background:
+        #c52d50;
 
     color: white;
 
@@ -552,67 +879,97 @@ body {
     z-index: 50;
 
     box-shadow:
-        0 0 20px rgba(255,60,100,.7);
+        0 0 20px
+        rgba(255,60,100,.7);
 
     display: none;
 }
 
-/* ================================
-   MÓVIL
-================================ */
+
+/* =====================================================
+   CELULARES
+===================================================== */
 
 @media(max-width: 500px) {
 
     #zonaSobre {
+
         width: 300px;
+
         height: 215px;
     }
 
+
     .sobre {
+
         height: 170px;
     }
 
+
     .sobre::after {
-        border-left-width: 150px;
-        border-right-width: 150px;
+
+        border-left-width:
+            150px;
+
+        border-right-width:
+            150px;
     }
 
+
     .miniCarta {
+
         height: 165px;
     }
 
+
     .papel {
-        padding: 40px 22px;
-        max-height: 90vh;
+
+        padding:
+            40px 22px 45px;
+
+        max-height:
+            90vh;
     }
+
 
     .textoCarta {
+
         font-size: 17px;
+
+        line-height: 1.75;
     }
 
+
     .versiculo {
+
         font-size: 16px;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- ================================
+
+<!-- =====================================================
      FONDO
-================================ -->
+===================================================== -->
 
 <div class="fondo">
+
     <div class="luz luz1"></div>
+
     <div class="luz luz2"></div>
+
 </div>
 
 
-<!-- ================================
+<!-- =====================================================
      PANTALLA INICIAL
-================================ -->
+===================================================== -->
 
 <section id="inicio">
 
@@ -620,14 +977,23 @@ body {
         Una carta para vos ❤️
     </h1>
 
+
     <div class="subtituloInicio">
-        Hay algo que preparé especialmente para vos...
+
+        Hay algo que preparé
+        especialmente para vos...
+
     </div>
+
 
     <div id="contador">
+
         Esperando...
+
     </div>
 
+
+    <!-- SOBRE -->
 
     <div id="zonaSobre">
 
@@ -641,13 +1007,382 @@ body {
 
 
     <button id="abrir">
+
         💌 Abrir mi carta
+
     </button>
 
 </section>
 
 
-<!-- ================================
+
+<!-- =====================================================
+     CARTA FINAL
+===================================================== -->
+
+<section id="cartaFinal">
+
+    <div class="papel">
+
+
+        <div
+            class="
+                tituloCarta
+                contenidoOculto
+                retraso1
+            "
+        >
+
+            Para el amor de mi vida ❤️
+
+        </div>
+
+
+
+        <div class="textoCarta">
+
+
+            <!-- PÁRRAFO 1 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso1
+                "
+            >
+
+                Hoy celebramos un nuevo paso en nuestro camino.
+                Cada mes contigo es un regalo, y me llena de
+                alegría saber que seguimos avanzando juntos
+                hacia lo que Dios tiene preparado para nosotros.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 2 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso2
+                "
+            >
+
+                Me gustó mucho que, al menos este año,
+                pude darte tus flores amarillas.
+
+                Puede parecer un detalle pequeño,
+                pero para mí significó mucho poder compartir
+                ese momento contigo y verte feliz.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 3 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso3
+                "
+            >
+
+                Y también nos debemos una salida lejos de
+                Grand Bourg.
+
+                Una de esas salidas en las que podamos
+                olvidarnos un rato de todo, caminar,
+                hablar, reírnos y simplemente disfrutar
+                de estar juntos.
+
+            </p>
+
+
+
+            <div class="separador contenidoOculto retraso3">
+
+                ♥ ♥ ♥
+
+            </div>
+
+
+
+            <!-- PÁRRAFO 4 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso4
+                "
+            >
+
+                Extraño pasear en Palermo contigo.
+
+                Extraño esos momentos simples,
+                caminar a tu lado, hablar de cualquier cosa
+                y sentir que no hacía falta mucho más
+                para pasarla bien.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 5 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso4
+                "
+            >
+
+                Son recuerdos que guardo con muchísimo cariño
+                y que espero podamos repetir muchas veces.
+
+                Porque muchas veces son justamente esos
+                momentos sencillos los que terminan siendo
+                los recuerdos más lindos.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 6 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso5
+                "
+            >
+
+                Sé que a veces nuestros tiempos no coinciden
+                y que no siempre podemos hacer todo lo que
+                queremos.
+
+                Pero también sé que Dios va a acomodar
+                nuestros tiempos.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 7 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso5
+                "
+            >
+
+                Y cuando llegue el momento,
+                vamos a poder disfrutar de muchas más cosas
+                juntos.
+
+                Más paseos, más salidas, más lugares por conocer,
+                más recuerdos y muchas historias que todavía
+                nos quedan por vivir.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 8 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso6
+                "
+            >
+
+                Me emociona pensar en todo lo que todavía
+                nos queda por vivir:
+
+                crecer juntos, aprender el uno del otro,
+                acompañarnos en cada etapa y seguir
+                construyendo nuestros sueños.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 9 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso6
+                "
+            >
+
+                Y entre todos esos sueños hay uno que
+                guardo con especial ilusión:
+
+                el día en que pueda llamarte mi esposa.
+
+            </p>
+
+
+
+            <!-- PÁRRAFO 10 -->
+
+            <p
+                class="
+                    contenidoOculto
+                    retraso6
+                "
+            >
+
+                Quiero seguir eligiéndote, acompañándote
+                y caminando a tu lado.
+
+                Quiero que algún día podamos mirar atrás
+                y recordar todos estos pequeños momentos
+                que, sin darnos cuenta, fueron construyendo
+                nuestra historia.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             VERSÍCULO
+        ================================================= -->
+
+        <div
+            class="
+                versiculo
+                contenidoOculto
+                retraso6
+            "
+        >
+
+            "Mejores son dos que uno;
+            porque tienen mejor paga de su trabajo.
+            Porque si cayeren, el uno levantará
+            a su compañero."
+
+            <br><br>
+
+            — Eclesiastés 4:9-10
+
+        </div>
+
+
+
+        <!-- =================================================
+             CIERRE
+        ================================================= -->
+
+        <div
+            class="
+                textoCarta
+                contenidoOculto
+                retraso6
+            "
+        >
+
+            <p>
+
+                Gracias por cada momento,
+                por cada sonrisa, por cada paseo
+                y por cada recuerdo que estamos construyendo.
+
+            </p>
+
+
+            <p>
+
+                Espero que esta sea solamente una pequeña
+                parte de todo lo que todavía nos queda
+                por vivir.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- FIRMA -->
+
+        <div
+            class="
+                firma
+                contenidoOculto
+                retraso6
+            "
+        >
+
+            Con todo mi corazón,
+
+            <br>
+
+            <strong>Nahuel</strong>
+
+        </div>
+
+
+
+        <div
+            class="
+                teAmo
+                contenidoOculto
+                retraso6
+            "
+        >
+
+            Te amo ❤️
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
+
+<audio
+    id="audio"
+    preload="auto"
+    loop
+>
+
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+
+<button id="botonMusica">
+
+    🎵
+
+</button>
+
+
+
+<script>
+
+
+/* =====================================================
+   FECHA DE APERTURA
+
+   30 DE SEPTIEM==
      CARTA
 ================================ -->
 
